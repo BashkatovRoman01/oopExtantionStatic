@@ -73,5 +73,56 @@ public class Car extends Transport {
     public void setEnginePower(double enginePower) {
         this.enginePower = validateEnginePower(enginePower);
     }
+
+    @Override
+    public String toString() {
+        return " Марка автомобиля " + brand + " модель " + model + " объем двигателя " + enginePower + " цвет " + color + " год выпуска " + year + " страна производитель " + country;
+    }
+
+    public int validateSeatCount(int seatCount) {
+        return seatCount <= 0 ? 4 : seatCount;
+    }
+
+    public static String validateCountry(String vslue) {
+        return validateString(value, "Rus");
+    }
+
+    public static double validateEnginePower(double value) {
+        return value < 0 ? 1.5 : value;
+    }
+
+    public static Integer validateYear(Integer value) {
+        return value == null || value <= 1900 ? 2000 : value;
+    }
+
+    public static String validateCarParameters(String value) {
+        return value == null ? "не указано" : value;
+    }
+
+    public static String validateCarColor(String value) {
+        return validateString(value, "белый");
+    }
+
+    public static String validateTransmission(String value) {
+        return validateString(value, "автомат");
+    }
+
+    public static class Key {
+        private final boolean remoteStart;
+        private final boolean keylessAccess;
+
+        public Key(boolean remoteStart, boolean keylessAccess) {
+            this.remoteStart = validateBoolean(remoteStart);
+            this.keylessAccess = validateBoolean(keylessAccess);
+        }
+
+        @Override
+        public String toString() {
+            return "Key{" +
+                    "remoteStart=" + remoteStart +
+                    ", keylessAccess=" + keylessAccess +
+                    '}';
+        }
+    }
 }
 
